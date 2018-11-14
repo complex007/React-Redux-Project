@@ -34,6 +34,7 @@ export const findWeather = (monthAndDay) => (dispatch) => {
       // daily weather is the most frequently weather within one day
       weather.list.forEach((weatherData) => {
         if (weatherData.dt >= dateUnix && weatherData.dt < dateUnix + 86400) {
+          // console.dir(weatherData);
           selectedDateWeatherData.temp += weatherData.main.temp;
           count += 1;
           if (selectedDateWeatherData.weather[weatherData.weather[0].main]) {

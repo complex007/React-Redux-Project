@@ -13,9 +13,8 @@ export class ForecastWeather extends Component {
     const today = new Date();
     const selectedMonth = today.getMonth();
     const selectedDay = today.getDate();
-    
     this.props.onSetMonth(today.getMonth());
-    this.props.onSetDay(today.getDay());
+    this.props.onSetDay(today.getDate());
     this.props.onFindWeather({
       selectedDay, 
       selectedMonth
