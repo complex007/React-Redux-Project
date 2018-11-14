@@ -1,0 +1,16 @@
+export const READ_ACTIVITIES = 'READ_ACTIVITIES';
+export const READ_ACTIVITY = 'READ_ACTIVITY';
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
+export const EDIT_ACTIVITY = 'EDIT_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
+export const REPLACE = 'ROUTER/REPLACE';
+export const SET_MONTH = 'SET_MONTH';
+export const SET_DAY = 'SET_DATE';
+export const SET_WEATHER_TEXT = 'SET_WEATHER_TEXT';
+export const GET_WEATHER = 'GET_WEATHER';
+export const FETCH_DATA_PENDING = 'FETCH_DATA_PENDING';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
+
+
+
