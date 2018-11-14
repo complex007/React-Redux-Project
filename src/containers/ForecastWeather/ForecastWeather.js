@@ -84,7 +84,7 @@ export class ForecastWeather extends Component {
       </td>));
 
     return ( 
-    <div>
+    <div id="message">
       <p>{weatherText}</p>
       <table>
         <tbody>

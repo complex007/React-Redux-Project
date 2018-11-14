@@ -10,9 +10,6 @@ const activitiesMiddleware = () => (next) => (action) => {
     case ADD_ACTIVITY:
       if (activitiesString) {
         activities = JSON.parse(activitiesString);
-        if (!Array.isArray(activities)) {
-          activities = [];
-        }
         newId = activities.length + 1;
       }
       action.activity.id = (new Date()).getTime();

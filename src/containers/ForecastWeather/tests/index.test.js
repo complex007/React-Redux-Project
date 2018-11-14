@@ -23,6 +23,7 @@ describe.only('<ForecastWeather />', () => {
     expect(onSetDaySpy).toHaveBeenCalled();
     expect(onFindWeatherSpy).toHaveBeenCalled();
   });
+
   describe('mapDispatchToProps', () => {
     describe('onSetMonth', () => {
       it('should be injected', () => {

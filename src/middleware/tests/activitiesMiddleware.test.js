@@ -3,8 +3,9 @@ import {
 } from '../../actions/activitiesActions';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import activitiesMiddleware from '../activitiesMiddleware';
 chai.use(chaiEnzyme());
+import activitiesMiddleware from '../activitiesMiddleware';
+
 
 describe('activitiesMiddleware', () => {
   const doDispatch = () => {};
@@ -30,44 +31,112 @@ describe('activitiesMiddleware', () => {
         actionHandler(actionObj);
       });
     });
-    it('read activities', () => {
-      const expected = readActivities();
-      const actionHandler = nextHandler(()=>expected);
-      const outcome = actionHandler(expected);
-      chai.assert.strictEqual(outcome, expected);
-    });
-    it('read activity', () => {
-      let date = new Date();
-      let id = date.getTime();
-      const expected = readActivity(id);
-      const actionHandler = nextHandler(()=>expected);
-      const outcome = actionHandler(expected);
-      chai.assert.strictEqual(outcome, expected);
-    });
-    it('add activity', () => {
+    describe(' there is  no activities in store', () => {
       let activity = {title: 'testActivity',description: 'for test',date:new Date()};
       let newActivity = Object.assign({id:activity.date.getTime()}, activity);
-      const expected = addActivity(newActivity);
-      const actionHandler = nextHandler(() => expected);
-      const outcome = actionHandler(expected);
-      chai.assert.deepEqual(outcome, expected);
+      let id = activity.date.getTime();
+      it('read activities', () => {
+        const expected = readActivities();
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+      });
+      it('read activity', () => {
+        const expected = readActivity(id);
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+      });
+      it('edit activity', () => {
+        let editedActivity = { id, title: 'testActivity edit',description: 'for test',date:new Date()};
+        const expected = editActivity(id,editedActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('delete activity', () => {
+        const expected = deleteActivity(id);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('add activity', () => {
+        const expected = addActivity(newActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        id = outcome.id;
+        chai.assert.deepEqual(outcome, expected);
+      });
     });
-    it('delete activity', () => {
-      const expected = deleteActivity((new Date()).getTime());
-      const actionHandler = nextHandler(() => expected);
-      const outcome = actionHandler(expected);
-      chai.assert.deepEqual(outcome, expected);
-    });
-    it('edit activity', () => {
-      let date = new Date();
-      let id = date.getTime();
-      let activity = { id, title: 'testActivity',description: 'for test',date};
-      const expected = editActivity(id,activity);
-      const actionHandler = nextHandler(() => expected);
-      const outcome = actionHandler(expected);
-      chai.assert.deepEqual(outcome, expected);
-    });
+    describe(' there is activities in store', () => {
+      let activity = {title: 'testActivity',description: 'for test',date:new Date()};
+      let newActivity = Object.assign({id:activity.date.getTime()}, activity);
+      let id;
+      it('read activities', () => {
+        const expected = readActivities();
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+        id = outcome.activities[0].id;
+      });
 
+      it('add activity', () => {
+        const expected = addActivity(newActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('add activity', () => {
+        const expected = addActivity(newActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('read activities', () => {
+        const expected = readActivities();
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+      });
+      it('read activity', () => {
+        const expected = readActivity(id);
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+      });
+      it('read activity', () => {
+        const expected = readActivity(0);
+        const actionHandler = nextHandler(()=>expected);
+        const outcome = actionHandler(expected);
+        chai.assert.strictEqual(outcome, expected);
+      });
+      it('edit activity', () => {
+        let editedActivity = { id, title: 'testActivity edit',description: 'for test',date:new Date()};
+        const expected = editActivity(id,editedActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('edit activity', () => {
+        let editedActivity = { id, title: 'testActivity edit',description: 'for test',date:new Date()};
+        const expected = editActivity(0,editedActivity);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('delete activity', () => {
+        const expected = deleteActivity(id);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+      it('delete activity', () => {
+        const expected = deleteActivity(0);
+        const actionHandler = nextHandler(() => expected);
+        const outcome = actionHandler(expected);
+        chai.assert.deepEqual(outcome, expected);
+      });
+    });
   });
   
 });
