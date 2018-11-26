@@ -20,6 +20,14 @@ export class ForecastWeather extends Component {
       selectedMonth
     });
   }
+  componentDidUpdate(){
+
+    // if the selectedDay is larger than the total days of the selected month
+    // set selectedDay to 1
+    if(this.props.weather.selectedDay > this.getNoOfDays(this.props.weather.selectedMonth)){
+      this.props.onSetDay(1);
+    }
+  }
 
   onChangeMonth(event) {
     this.props.onSetMonth(event.target.options.selectedIndex);
@@ -59,14 +67,13 @@ export class ForecastWeather extends Component {
 
   renderMonthDateSelection(selectedDay) {
     if(+selectedDay > 0){
-      
       const noOfdays = this.getNoOfDays(this.props.weather.selectedMonth);
       const dateSelection = [];
       for (let i = 1; i <= noOfdays; i += 1) {
         dateSelection.push((<option value={i} key={i}>{i}</option>));
       }
       return (
-        <select className="browser-default" defaultValue={ selectedDay > noOfdays? 1: selectedDay }  onChange={(e) => this.onChangeDate(e)}>
+        <select className="browser-default" defaultValue={selectedDay}  onChange={(e) => this.onChangeDate(e)}>
           {dateSelection}
         </select>
       );
@@ -78,7 +85,7 @@ export class ForecastWeather extends Component {
     const weatherCell = weatherEvery3hour.map((w, index) => 
       (<td key={index}>
         <p>{w.time}</p>
-        <p><img alt="weather-chart" src={`http://openweathermap.org/img/w/${w.weather.icon}.png`}/>{w.weather.main}</p>
+        <p><img alt="weather-chart" src={`https://openweathermap.org/img/w/${w.weather.icon}.png`}/>{w.weather.main}</p>
         <p>{w.main.temp}°C</p>
       </td>));
 
@@ -112,7 +119,7 @@ export class ForecastWeather extends Component {
               {this.renderMonthDateSelection(this.props.weather.selectedDay)}
             </div>
             <div className="search-group">
-              <button className="btn indigo waves-effect waves-light lighten-1" type="submit" name="submit" onClick={(e) => this.onSeeWeather(e)}>check weather</button>
+              <button className="btn indigo" type="submit" name="submit" onClick={(e) => this.onSeeWeather(e)}>check weather</button>
             </div>
           </div>
           <div className="search-date">

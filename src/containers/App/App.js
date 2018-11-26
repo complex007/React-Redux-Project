@@ -13,7 +13,7 @@ import ActivityList from '../ActivityList';
 import ActivityForm from '../ActivityForm';
 import initialState from '../../store/initialState';
 import configureStore from '../../store/configureStore';
-const history = createBrowserHistory()
+const history = createBrowserHistory({basename:process.env.PUBLIC_URL});
 const store = configureStore(initialState, history);
 
 // sync localstorage across tabs
@@ -29,17 +29,17 @@ const App = () => (
             <nav className="nav-bar indigo lighten-1">
               <div className="nav-wrapper">
               <ul id="nav-mobile" className="left">
-                  <li><Link to="/weather">ForecastWeather</Link></li>
-                  <li><Link to="/activity">Activity</Link></li>
+                  <li><Link to={'/weather'}>ForecastWeather</Link></li>
+                  <li><Link to={'/activity'}>Activity</Link></li>
               </ul>
               </div>
             </nav>
             <Switch>
-              <Route exact path="/" component={ForecastWeather} />
-              <Route exact path="/weather" component={ForecastWeather} />
-              <Route exact path="/activity" component={ActivityList} />
-              <Route exact path="/activity/new" component={ActivityForm} />
-              <Route exact path="/activity/:id" component={ActivityForm} />
+              <Route exact path={'/'} component={ForecastWeather} />
+              <Route exact path={'/weather'} component={ForecastWeather} />
+              <Route exact path={'/activity'} component={ActivityList} />
+              <Route exact path={'/activity/new'} component={ActivityForm} />
+              <Route exact path={'/activity/:id'} component={ActivityForm} />
               <Route component={ForecastWeather} />
             </Switch>
           </div>

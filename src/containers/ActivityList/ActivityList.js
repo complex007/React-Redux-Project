@@ -8,10 +8,10 @@ export class ActivityList extends Component {
   constructor() {
     super();
     this.onAddActivity = () => {
-      window.open(`${window.location.origin}/activity/new`, '_blank');
+      window.open(`${window.location.origin}${window.location.pathname}/new`, '_blank');
     }
     this.onEditActivity = (id) => {
-      window.open(`${window.location.origin}/activity/${id}`, '_blank');
+      window.open(`${window.location.origin}${window.location.pathname}/${id}`, '_blank');
     }
   }
   componentDidMount(){

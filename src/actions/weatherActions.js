@@ -13,7 +13,7 @@ export const setWeatherText = (weatherText, weatherEvery3hour) => ({
 });
 
 export const findWeather = (monthAndDay) => (dispatch) => {
-  const weatherIn5DaysUrl = `http://api.openweathermap.org/data/2.5/forecast?id=1880252&appid=c39f3947b671b234f7f5571b40977227&units=metric`;
+  const weatherIn5DaysUrl = `https://api.openweathermap.org/data/2.5/forecast?id=1880252&appid=c39f3947b671b234f7f5571b40977227&units=metric`;
   const request = new Request(weatherIn5DaysUrl, { method: 'GET' });
   const monthSelectionArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return fetch(request)
@@ -34,7 +34,6 @@ export const findWeather = (monthAndDay) => (dispatch) => {
       // daily weather is the most frequently weather within one day
       weather.list.forEach((weatherData) => {
         if (weatherData.dt >= dateUnix && weatherData.dt < dateUnix + 86400) {
-          // console.dir(weatherData);
           selectedDateWeatherData.temp += weatherData.main.temp;
           count += 1;
           if (selectedDateWeatherData.weather[weatherData.weather[0].main]) {
