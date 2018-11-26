@@ -36,7 +36,7 @@ export class ActivityForm extends Component {
   renderDeleteBtn(params) {
     if (params && params.id) {
       return (
-        <button type="delete" onClick={(e) => this.handleDelete(e)}>Delete</button>
+        <button class="btn red" type="delete" onClick={(e) => this.handleDelete(e)}>Delete</button>
       );
     }
     return null;
@@ -53,18 +53,18 @@ export class ActivityForm extends Component {
         <form onSubmit={(e) => this.props.onSubmit(e, this.match.params,this.getTitle.value,this.getDes.value,this.getDate.value)}>
           <label id="title" htmlFor="title">
             Title
-            <input type="text" id="titleInput"  placeholder="Title" ref={ (input) => {this.getTitle = input} } defaultValue={this.getDefaultValue(this.match.params, this.activities, 'title')} />
+            <input required type="text" id="titleInput"  placeholder="Title" ref={ (input) => {this.getTitle = input} } defaultValue={this.getDefaultValue(this.match.params, this.activities, 'title')} />
           </label>
           <label id="desc" htmlFor="desc">
             Description
-            <input type="text" rows="5" cols="28" placeholder="Description" ref={ (input) => {this.getDes = input} } defaultValue={this.getDefaultValue(this.match.params, this.activities, 'description')} />
+            <input required type="text" rows="5" cols="28" placeholder="Description" ref={ (input) => {this.getDes = input} } defaultValue={this.getDefaultValue(this.match.params, this.activities, 'description')} />
           </label>
           <label id="date" htmlFor="date">
             Date
-            <input className='datepicker' ref={ (input) => {this.getDate = input} } type="text" placeholder="Date"  defaultValue={this.getDefaultValue(this.props.match.params,this.activities,'date') }/>
+            <input required className='datepicker' ref={ (input) => {this.getDate = input} } type="text" placeholder="Date"  defaultValue={this.getDefaultValue(this.props.match.params,this.activities,'date') }/>
           </label>
           {this.renderDeleteBtn(this.match.params)}
-          <button type="submit">Confirm</button>
+          <button class="btn indigo" type="submit">Confirm</button>
         </form>
       </div>
     );
