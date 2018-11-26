@@ -1,7 +1,7 @@
 {
   "main.css": "/React-Redux-Project/static/css/main.1e79c294.chunk.css",
-  "main.js": "/React-Redux-Project/static/js/main.68ce928e.chunk.js",
-  "main.js.map": "/React-Redux-Project/static/js/main.68ce928e.chunk.js.map",
+  "main.js": "/React-Redux-Project/static/js/main.6bc67cce.chunk.js",
+  "main.js.map": "/React-Redux-Project/static/js/main.6bc67cce.chunk.js.map",
   "static/css/1.023b8769.chunk.css": "/React-Redux-Project/static/css/1.023b8769.chunk.css",
   "static/js/1.c52f75b3.chunk.js": "/React-Redux-Project/static/js/1.c52f75b3.chunk.js",
   "static/js/1.c52f75b3.chunk.js.map": "/React-Redux-Project/static/js/1.c52f75b3.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/1.023b8769.chunk.css.map": "/React-Redux-Project/static/css/1.023b8769.chunk.css.map",
   "static/css/main.1e79c294.chunk.css.map": "/React-Redux-Project/static/css/main.1e79c294.chunk.css.map",
   "index.html": "/React-Redux-Project/index.html",
-  "precache-manifest.b96747db6d1e4335f0a17657d3590af7.js": "/React-Redux-Project/precache-manifest.b96747db6d1e4335f0a17657d3590af7.js",
+  "precache-manifest.5023323b01a14b41c4967bb4d0b96091.js": "/React-Redux-Project/precache-manifest.5023323b01a14b41c4967bb4d0b96091.js",
   "service-worker.js": "/React-Redux-Project/service-worker.js"
 }
