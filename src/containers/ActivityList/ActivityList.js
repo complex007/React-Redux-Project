@@ -47,7 +47,7 @@ export class ActivityList extends Component {
       <div>
         <h3>ActivityList</h3>
         {this.renderList(this.activities)}
-        <button class="btn indigo" type="submit" onClick={()=>this.onAddActivity()}>Add</button>
+        <button className="btn indigo" type="submit" onClick={()=>this.onAddActivity()}>Add</button>
       </div>
     );
   }

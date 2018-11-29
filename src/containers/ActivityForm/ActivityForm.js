@@ -36,7 +36,7 @@ export class ActivityForm extends Component {
   renderDeleteBtn(params) {
     if (params && params.id) {
       return (
-        <button class="btn red" type="delete" onClick={(e) => this.handleDelete(e)}>Delete</button>
+        <button className="btn red" type="delete" onClick={(e) => this.handleDelete(e)}>Delete</button>
       );
     }
     return null;
@@ -64,7 +64,7 @@ export class ActivityForm extends Component {
             <input required className='datepicker' ref={ (input) => {this.getDate = input} } type="text" placeholder="Date"  defaultValue={this.getDefaultValue(this.props.match.params,this.activities,'date') }/>
           </label>
           {this.renderDeleteBtn(this.match.params)}
-          <button class="btn indigo" type="submit">Confirm</button>
+          <button className="btn indigo" type="submit">Confirm</button>
         </form>
       </div>
     );
