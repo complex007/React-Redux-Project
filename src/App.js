@@ -7,12 +7,12 @@ import { createBrowserHistory } from 'history';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
-import startStorageListener from '../../listener/storageListener';
-import ForecastWeather from '../ForecastWeather';
-import ActivityList from '../ActivityList';
-import ActivityForm from '../ActivityForm';
-import initialState from '../../store/initialState';
-import configureStore from '../../store/configureStore';
+import startStorageListener from './listener/storageListener';
+import ForecastWeather from './containers/ForecastWeather';
+import ActivityList from './containers/ActivityList';
+import ActivityForm from './containers/ActivityForm';
+import initialState from './store/initialState';
+import configureStore from './store/configureStore';
 const history = createBrowserHistory({basename:process.env.PUBLIC_URL});
 const store = configureStore(initialState, history);
 

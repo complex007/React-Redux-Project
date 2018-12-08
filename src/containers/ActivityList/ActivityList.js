@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ActivityItem from '../../components/ActivityItem';
 import { readActivities } from '../../actions/activitiesActions';
+import {replace} from '../../actions/routerActions'
 import './ActivityList.css';
 export class ActivityList extends Component {
   constructor() {
     super();
     this.onAddActivity = () => {
-      window.open(`${window.location.origin}${window.location.pathname}/new`, '_blank');
+      this.props.onChangeRoute('activity/new')
     }
     this.onEditActivity = (id) => {
-      window.open(`${window.location.origin}${window.location.pathname}/${id}`, '_blank');
+      this.props.onChangeRoute(`activity/${id}`)
     }
   }
   componentDidMount(){
@@ -60,6 +61,9 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => ({
   onReadActivities: () => {
     dispatch(readActivities());
+  },
+  onChangeRoute: (route) => {
+    dispatch(replace(route));
   }
 
 });
